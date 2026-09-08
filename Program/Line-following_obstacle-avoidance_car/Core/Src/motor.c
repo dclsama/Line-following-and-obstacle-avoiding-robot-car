@@ -1,0 +1,54 @@
+#include "motor.h"
+#include "board.h"
+
+void motor_init(void) {
+  HAL_GPIO_WritePin(STBY_PORT, STBY_PIN, GPIO_PIN_SET);  /* 使能 TB6612 */
+}
+
+void motor_set(int32_t left, int32_t right) {
+  /* 限幅 */
+  if (left > PWM_MAX) left = PWM_MAX;
+  else if (left < -PWM_MAX) left = -PWM_MAX;
+  if (right > PWM_MAX) right = PWM_MAX;
+  else if (right < -PWM_MAX) right = -PWM_MAX;
+
+  /* 左轮 */
+  if (left >= 0) {
+    HAL_GPIO_WritePin(MOTOR_L_IN1_PORT, MOTOR_L_IN1_PIN, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(MOTOR_L_IN2_PORT, MOTOR_L_IN2_PIN, GPIO_PIN_RESET);
+    __HAL_TIM_SET_COMPARE(PWM_TIM, PWM_CH_LEFT, (uint32_t)left);
+  } else {
+    HAL_GPIO_WritePin(MOTOR_L_IN1_PORT, MOTOR_L_IN1_PIN, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(MOTOR_L_IN2_PORT, MOTOR_L_IN2_PIN, GPIO_PIN_SET);
+    __HAL_TIM_SET_COMPARE(PWM_TIM, PWM_CH_LEFT, (uint32_t)(-left));
+  }
+
+  /* 右轮 */
+  if (right >= 0) {
+    HAL_GPIO_WritePin(MOTOR_R_IN1_PORT, MOTOR_R_IN1_PIN, GPIO_PIN_SET);
+    HAL_GPIO_WritePin(MOTOR_R_IN2_PORT, MOTOR_R_IN2_PIN, GPIO_PIN_RESET);
+    __HAL_TIM_SET_COMPARE(PWM_TIM, PWM_CH_RIGHT, (uint32_t)right);
+  } else {
+    HAL_GPIO_WritePin(MOTOR_R_IN1_PORT, MOTOR_R_IN1_PIN, GPIO_PIN_RESET);
+    HAL_GPIO_WritePin(MOTOR_R_IN2_PORT, MOTOR_R_IN2_PIN, GPIO_PIN_SET);
+    __HAL_TIM_SET_COMPARE(PWM_TIM, PWM_CH_RIGHT, (uint32_t)(-right));
+  }
+}
+
+void motor_stop(void) {
+  __HAL_TIM_SET_COMPARE(PWM_TIM, PWM_CH_LEFT, 0);
+  __HAL_TIM_SET_COMPARE(PWM_TIM, PWM_CH_RIGHT, 0);
+  HAL_GPIO_WritePin(MOTOR_L_IN1_PORT, MOTOR_L_IN1_PIN, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(MOTOR_L_IN2_PORT, MOTOR_L_IN2_PIN, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(MOTOR_R_IN1_PORT, MOTOR_R_IN1_PIN, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(MOTOR_R_IN2_PORT, MOTOR_R_IN2_PIN, GPIO_PIN_RESET);
+}
+
+void motor_brake(void) {
+  __HAL_TIM_SET_COMPARE(PWM_TIM, PWM_CH_LEFT, 0);
+  __HAL_TIM_SET_COMPARE(PWM_TIM, PWM_CH_RIGHT, 0);
+  HAL_GPIO_WritePin(MOTOR_L_IN1_PORT, MOTOR_L_IN1_PIN, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(MOTOR_L_IN2_PORT, MOTOR_L_IN2_PIN, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(MOTOR_R_IN1_PORT, MOTOR_R_IN1_PIN, GPIO_PIN_SET);
+  HAL_GPIO_WritePin(MOTOR_R_IN2_PORT, MOTOR_R_IN2_PIN, GPIO_PIN_SET);
+}
