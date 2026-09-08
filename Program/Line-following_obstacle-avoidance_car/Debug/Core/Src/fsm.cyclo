@@ -1,0 +1,4 @@
+../Core/Src/fsm.c:37:13:snapshot	1
+../Core/Src/fsm.c:42:16:avg_abs_travel	3
+../Core/Src/fsm.c:50:6:fsm_init	1
+../Core/Src/fsm.c:63:6:fsm_run	30
