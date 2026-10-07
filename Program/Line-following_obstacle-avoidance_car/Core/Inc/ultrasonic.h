@@ -3,9 +3,11 @@
 
 #include "main.h"
 
-#define US_CENTER 0   /* 前中 */
-#define US_LEFT   1   /* 左前 */
-#define US_RIGHT  2   /* 右前 */
+#define US_CENTER     0   /* 正前 */
+#define US_LEFT       1   /* 左前 */
+#define US_RIGHT      2   /* 右前 */
+#define US_LEFT_SIDE  3   /* 左侧(垂直朝左) */
+#define US_RIGHT_SIDE 4   /* 右侧(垂直朝右) */
 
 void ultrasonic_init(void);
 void ultrasonic_update(void);        /* 每调用一次测一路(轮流), 避免串扰 */

@@ -1,4 +1,6 @@
-../Core/Src/motor.c:4:6:motor_init	1
-../Core/Src/motor.c:8:6:motor_set	7
-../Core/Src/motor.c:38:6:motor_stop	1
-../Core/Src/motor.c:47:6:motor_brake	1
+../Core/Src/motor.c:6:6:motor_init	1
+../Core/Src/motor.c:10:9:motor_left_out	1
+../Core/Src/motor.c:14:9:motor_right_out	1
+../Core/Src/motor.c:18:6:motor_set	7
+../Core/Src/motor.c:51:6:motor_stop	1
+../Core/Src/motor.c:62:6:motor_brake	1

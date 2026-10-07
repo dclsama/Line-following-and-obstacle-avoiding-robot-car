@@ -1,0 +1,4 @@
+../Core/Src/utils.c:5:6:dwt_init	1
+../Core/Src/utils.c:11:10:micros	1
+../Core/Src/utils.c:15:6:delay_us	2
+../Core/Src/utils.c:22:5:__io_putchar	1

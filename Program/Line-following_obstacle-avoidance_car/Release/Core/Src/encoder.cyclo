@@ -1,0 +1,4 @@
+../Core/Src/encoder.c:9:6:encoder_init	1
+../Core/Src/encoder.c:16:6:encoder_update	1
+../Core/Src/encoder.c:25:9:encoder_left	1
+../Core/Src/encoder.c:29:9:encoder_right	1

@@ -1,4 +1,8 @@
-../Core/Src/fsm.c:37:13:snapshot	1
-../Core/Src/fsm.c:42:16:avg_abs_travel	3
-../Core/Src/fsm.c:50:6:fsm_init	1
-../Core/Src/fsm.c:63:6:fsm_run	30
+../Core/Src/fsm.c:35:13:snapshot	1
+../Core/Src/fsm.c:40:16:avg_abs_travel	3
+../Core/Src/fsm.c:55:13:led_update	8
+../Core/Src/fsm.c:85:15:obstacle_detect	8
+../Core/Src/fsm.c:120:16:turn_diff	1
+../Core/Src/fsm.c:133:12:side_safe	2
+../Core/Src/fsm.c:140:6:fsm_init	1
+../Core/Src/fsm.c:156:6:fsm_run	30

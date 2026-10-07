@@ -1,0 +1,2 @@
+../Core/Src/fsm.c:70:6:fsm_init	8	static
+../Core/Src/fsm.c:86:6:fsm_run	112	static

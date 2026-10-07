@@ -1,8 +1,18 @@
 #include "motor.h"
 #include "board.h"
 
+static int32_t out_l = 0, out_r = 0;   /* 记录实际输出的 PWM, 供调试打印 */
+
 void motor_init(void) {
   HAL_GPIO_WritePin(STBY_PORT, STBY_PIN, GPIO_PIN_SET);  /* 使能 TB6612 */
+}
+
+int32_t motor_left_out(void) {
+  return out_l;
+}
+
+int32_t motor_right_out(void) {
+  return out_r;
 }
 
 void motor_set(int32_t left, int32_t right) {
@@ -11,6 +21,9 @@ void motor_set(int32_t left, int32_t right) {
   else if (left < -PWM_MAX) left = -PWM_MAX;
   if (right > PWM_MAX) right = PWM_MAX;
   else if (right < -PWM_MAX) right = -PWM_MAX;
+
+  out_l = left;
+  out_r = right;
 
   /* 左轮 */
   if (left >= 0) {
@@ -36,6 +49,8 @@ void motor_set(int32_t left, int32_t right) {
 }
 
 void motor_stop(void) {
+  out_l = 0;
+  out_r = 0;
   __HAL_TIM_SET_COMPARE(PWM_TIM, PWM_CH_LEFT, 0);
   __HAL_TIM_SET_COMPARE(PWM_TIM, PWM_CH_RIGHT, 0);
   HAL_GPIO_WritePin(MOTOR_L_IN1_PORT, MOTOR_L_IN1_PIN, GPIO_PIN_RESET);
@@ -45,6 +60,8 @@ void motor_stop(void) {
 }
 
 void motor_brake(void) {
+  out_l = 0;
+  out_r = 0;
   __HAL_TIM_SET_COMPARE(PWM_TIM, PWM_CH_LEFT, 0);
   __HAL_TIM_SET_COMPARE(PWM_TIM, PWM_CH_RIGHT, 0);
   HAL_GPIO_WritePin(MOTOR_L_IN1_PORT, MOTOR_L_IN1_PIN, GPIO_PIN_SET);
