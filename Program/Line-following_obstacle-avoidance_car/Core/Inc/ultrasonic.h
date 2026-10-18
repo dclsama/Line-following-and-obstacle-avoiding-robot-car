@@ -11,6 +11,10 @@
 
 void ultrasonic_init(void);
 void ultrasonic_update(void);        /* 每调用一次测一路(轮流), 避免串扰 */
-float ultrasonic_dist(uint8_t idx);  /* 距离(cm), 无回波返回 999 */
+float ultrasonic_dist(uint8_t idx);  /* 中值滤波后的距离(cm), 无效返回 999 */
+
+/* 最近一次【原始】读数(未经过有效性窗口和中值滤波), 仅供 DEBUG_PRINT 诊断用.
+ * 想确认某个通道是不是一直在误报, 就对比它和 ultrasonic_dist() 的差异. */
+float ultrasonic_last_raw(uint8_t idx);
 
 #endif

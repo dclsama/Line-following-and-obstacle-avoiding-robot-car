@@ -1,4 +1,5 @@
-../Core/Src/ultrasonic.c:24:14:measure	24	static
-../Core/Src/ultrasonic.c:53:6:ultrasonic_init	16	static
-../Core/Src/ultrasonic.c:61:6:ultrasonic_update	24	static
-../Core/Src/ultrasonic.c:80:7:ultrasonic_dist	16	static
+../Core/Src/ultrasonic.c:30:14:measure	24	static
+../Core/Src/ultrasonic.c:67:6:ultrasonic_init	16	static
+../Core/Src/ultrasonic.c:79:6:ultrasonic_update	16	static
+../Core/Src/ultrasonic.c:109:7:ultrasonic_dist	16	static
+../Core/Src/ultrasonic.c:113:7:ultrasonic_last_raw	16	static

@@ -1,2 +1,5 @@
-../Core/Src/fsm.c:70:6:fsm_init	1
-../Core/Src/fsm.c:86:6:fsm_run	24
+../Core/Src/fsm.c:35:13:snapshot	1
+../Core/Src/fsm.c:120:16:turn_diff	1
+../Core/Src/fsm.c:40:16:avg_abs_travel	3
+../Core/Src/fsm.c:140:6:fsm_init	1
+../Core/Src/fsm.c:156:6:fsm_run	35

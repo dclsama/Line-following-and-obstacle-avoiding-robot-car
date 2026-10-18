@@ -1,4 +1,4 @@
 ../Core/Src/encoder.c:9:6:encoder_init	4	static
 ../Core/Src/encoder.c:16:6:encoder_update	16	static
-../Core/Src/encoder.c:25:9:encoder_left	4	static
-../Core/Src/encoder.c:29:9:encoder_right	4	static
+../Core/Src/encoder.c:34:9:encoder_left	4	static
+../Core/Src/encoder.c:38:9:encoder_right	4	static

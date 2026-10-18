@@ -16,6 +16,11 @@ int32_t motor_right_out(void) {
 }
 
 void motor_set(int32_t left, int32_t right) {
+  /* 左右轮补偿(百分比): 抵消重心偏移/电机个体差异.
+     必须放在限幅之前, 否则补偿后的值可能越过 PWM_MAX. */
+  left  = left  * MOTOR_L_GAIN / 100;
+  right = right * MOTOR_R_GAIN / 100;
+
   /* 限幅 */
   if (left > PWM_MAX) left = PWM_MAX;
   else if (left < -PWM_MAX) left = -PWM_MAX;
